@@ -2,7 +2,7 @@
   "name": "node-customer.io",
   "preferGlobal": false,
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "lib/Customerio",
   "description": "Customer.io node.js API wrapper",
   "keywords": [

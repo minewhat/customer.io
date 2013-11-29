@@ -10,7 +10,6 @@ util = require 'util'
 querystring = require 'querystring'
 
 PROTOCOL = 'https'
-PORT = 443
 HOST = 'track.customer.io/api'
 API_VERSION = 1
 
@@ -30,7 +29,6 @@ class Customerio
 
     @protocol = PROTOCOL
     @host = HOST
-    @port = PORT
 
     @requestOptions =
       auth: "#{@siteId}:#{@secretKey}"
@@ -45,7 +43,7 @@ class Customerio
      -X PUT \
      -u YOUR-SITE-ID-HERE:YOUR-SECRET-API-KEY-HERE \
      -d email=customer@example.com \
-   css  -d name=Bob \
+     -d name=Bob \
      -d plan=premium
    
   Example request JSON
@@ -73,8 +71,8 @@ class Customerio
     options.method = 'PUT'
     options.headers =
       'Accept': 'application/json'
-      'Content-type': 'application/json'
-      'Content-Length': body.length
+      'Content-Type': 'application/json'
+      'Content-Length': Buffer.byteLength(body)
 
     req = hyperquest uri, options, _responseHandler(callback)
     req.end body
@@ -138,8 +136,8 @@ class Customerio
     options.method = 'POST'
     options.headers =
       'Accept': 'application/json'
-      'Content-type': 'application/x-www-form-urlencoded'
-      'Content-Length': body.length
+      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Length': Buffer.byteLength(body)
 
     req = hyperquest uri, options, _responseHandler(callback)
     req.end body
